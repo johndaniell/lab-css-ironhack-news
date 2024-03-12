@@ -4,12 +4,23 @@ html {
   box-sizing: border-box;
   font-size: 16px;
 }
-  
-*, *:before, *:after {
+
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
-  
-body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
   margin: 0;
   padding: 0;
   font-weight: lighter;
@@ -27,7 +38,7 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
   padding: 5px 8px;
   font-size: 14px;
 }
-  
+
 /* STYLES */
 
 /*  Fonts */
@@ -175,5 +186,302 @@ header {
 .btn-blue {
   background-color: #007bff;
 }
-  
+
 /* Write your CSS below */
+/* I'm leaving all the comments below so I KNOW what does each setting for future refference */
+/* Don't you guys have Phones - you should get the reference :)))))))))) */
+
+/* Initial state for large screens - Menu icon hidden, navbar displayed */
+.menu-icon {
+  display: none;
+}
+
+.navbar {
+  display: flex;
+}
+
+
+@media (min-width: 481px)and (max-width: 760px) {
+
+  /* Stack the navbar items vertically from top to bottom */
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar li {
+    width: 100%;
+    /* Make navbar items full width */
+    border-bottom: 1px solid #ffffff;
+    /* Add a border to the bottom of each item */
+    border-right: none;
+    /* Remove the right border */
+  }
+
+  /* Ensure main content stacks vertically */
+  main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-article,
+  .article {
+    width: 100%;
+    /* Set article width to full container width */
+  }
+
+  /* Adjust the main article layout */
+  .main-article {
+    margin: 20px 0;
+    /* Add top and bottom margin for spacing */
+    padding: 10;
+    /* Reset any padding if needed */
+    flex-direction: column;
+    align-items: center;
+    /* Center-align the items for consistency */
+  }
+
+  .main-article .image,
+  .main-article .content {
+    width: 100%;
+    /* Set image and content width to full container width */
+    padding: 0 10px;
+    /* Adjust padding for small screens */
+  }
+
+  .main-article img {
+    order: -1;
+    /* Ensure the image is above the article content */
+  }
+
+  /* Adjust image styling inside main article for consistency */
+  .main-article .image img {
+    width: auto;
+    /* Change width to auto to maintain aspect ratio */
+    max-width: 100%;
+    /* Ensure the image is not larger than its container */
+    height: auto;
+    /* Maintain aspect ratio */
+  }
+
+  /* Adjust the articles container */
+  .articles-container {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  /* Adjust buttons in articles to full width */
+  .btn {
+    width: 100%;
+    /* Set button width to full container width */
+    box-sizing: border-box;
+    /* Include padding and border in the element's total width and height */
+  }
+
+  .article {
+    margin-bottom: 20px;
+    /* Add bottom margin for spacing */
+    width: auto;
+    /* Reset width to auto to maintain consistency */
+  }
+
+  /* Last article should not have a margin at the bottom */
+  .article:last-child {
+    margin-bottom: 0;
+  }
+
+}
+
+
+/* Tablet world  */
+@media (min-width: 761px) and (max-width: 1023px) {
+
+  /* Display navbar links horizontally */
+  .navbar {
+    justify-content: space-around;
+    /* Distribute items evenly with space around them */
+  }
+
+  /* Ensure navbar list items take up equal space */
+  .navbar li {
+    flex: 1;
+    /* Allows each list item to grow and take equal space */
+    border-right: 1px solid #ffffff;
+    /* Keep the border for distinction */
+    border-bottom: none;
+    /* Remove the bottom border */
+    height: auto;
+    /* Allow the height to adjust automatically */
+  }
+
+  /* Remove the border for the last navbar item */
+  .navbar li:last-child {
+    border-right: none;
+  }
+
+  /* Display the main article on top of the page taking full width */
+  .main-article {
+    flex-direction: row;
+    /* Align image and content side by side */
+    width: 100%;
+    /* Full width of the page */
+    margin: 20px 0;
+    /* Adjust the margin for spacing */
+  }
+
+  /* Align the image on the left and content on the right */
+  .main-article .image,
+  .main-article .content {
+    width: 50%;
+    /* Divide the width equally between image and content */
+  }
+
+  /* Adjust the main article image to fit */
+  .main-article img {
+    width: 100%;
+    /* Ensure the image covers the full div */
+    height: auto;
+    /* Maintain aspect ratio */
+  }
+
+  /* Style other articles to be displayed two in a row */
+  .articles-container {
+    justify-content: space-between;
+    /* Distribute space between articles */
+    padding: 0;
+
+  }
+
+  .article {
+    width: calc(50% - 40px);
+    /* Adjust width for 2 in a row, minus padding */
+    margin: 10px 0;
+    /* Provide spacing between rows */
+  }
+
+  /* Adjust buttons to fit within articles */
+  .btn {
+    display: block;
+    /* Make buttons block level for full width */
+    width: auto;
+    /* Reset width */
+  }
+
+
+}
+
+/* Tini Tiny */
+@media (max-width: 480px) {
+
+  /* Hide the navbar links */
+  .navbar {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    /* Adjust this value to be below your header */
+    left: 0;
+    background-color: #333;
+    /* Same as your header background */
+    z-index: 1000;
+    /* Ensure it's on top of other content */
+    width: 100%;
+    /* Full width */
+  }
+
+  /* Show the menu icon */
+  .menu-icon {
+    display: block;
+    /* Show the menu icon */
+    position: relative;
+    /* Position it on top right */
+    top: 0;
+    right: 0;
+    padding: 5px;
+    /* Add some space around the icon */
+  }
+
+    .navbar a {
+      display: block;
+      /* Stack the links */
+      color: white;
+      /* Text color */
+      padding: 10px;
+      /* Padding for tap targets */
+      border-bottom: 1px solid white;
+      /* Separator */
+    }
+  
+    .navbar li:last-child a {
+      border-bottom: none;
+      /* No border for the last item */
+    }
+  /* Ensure main content stacks vertically */
+  main {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 5px;
+  }
+
+  /* Adjust the main article layout */
+  .main-article {
+    margin: 10px 0;
+    /* Add top and bottom margin for spacing */
+    padding: 5px;
+    /* Reset any padding if needed */
+    flex-direction: column;
+    align-items: center;
+    /* Center-align the items for consistency */
+  }
+
+  .main-article .image,
+  .main-article .content {
+    width: 100%;
+    /* Set image and content width to full container width */
+    padding: 5px 5px;
+    /* Adjust padding for small screens */
+  }
+
+  .main-article img {
+    order: -1;
+    /* Ensure the image is above the article content */
+  }
+
+  /* Adjust image styling inside main article for consistency */
+  .main-article .image img {
+    width: auto;
+    /* Change width to auto to maintain aspect ratio */
+    max-width: 100%;
+    /* Ensure the image is not larger than its container */
+    height: auto;
+    /* Maintain aspect ratio */
+  }
+
+  /* Adjust the articles container */
+  .articles-container {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  /* Adjust buttons in articles to full width */
+  .btn {
+    width: 100%;
+    /* Set button width to full container width */
+    box-sizing: border-box;
+    /* Include padding and border in the element's total width and height */
+  }
+
+  .article {
+    margin-bottom: 5px;
+    /* Add bottom margin for spacing */
+    width: auto;
+    /* Reset width to auto to maintain consistency */
+  }
+
+  /* Last article should not have a margin at the bottom */
+  .article:last-child {
+    margin-bottom: 0;
+  }
+
+
+}
